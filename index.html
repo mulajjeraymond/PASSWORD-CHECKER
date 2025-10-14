@@ -76,7 +76,7 @@
       const symbols = password.match(/[^A-Za-z0-9]/g) || [];
 
       if (password.length !== 9) {
-        message.textContent = "❌ Error: Password must be exactly 8 characters long.";
+        message.textContent = "❌ Error: Password must be exactly 9 characters long.";
         message.className = "message error";
       } 
       else if (letters.length === 4 && numbers.length === 2 && symbols.length === 3) {
@@ -84,12 +84,13 @@
         message.className = "message success";
       } 
       else {
-        message.textContent = "❌ Error: Password must contain exactly 4 letters, 2 numbers, and 2 symbols.";
+        message.textContent = "❌ Error: Password must contain exactly 4 letters, 2 numbers, and 3symbols.";
         message.className = "message error";
       }
     }
   </script>
 </body>
 </html>
+
 
 
