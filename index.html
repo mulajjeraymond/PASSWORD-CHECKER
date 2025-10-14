@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Validator</title>
+  <title>Password Strength Checker</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #eed705;
+      background: #f0f2f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
     .container {
-      background: #fff;
+      background: white;
       padding: 25px 35px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
-      width: 300px;
+      width: 320px;
     }
     input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       font-size: 16px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -31,12 +31,12 @@
     }
     button {
       width: 100%;
-      background: #007BFF;
+      background: #007bff;
+      color: white;
       border: none;
       padding: 10px;
-      color: #fff;
-      border-radius: 5px;
       font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
@@ -56,34 +56,34 @@
 </head>
 <body>
   <div class="container">
-    <h2>RAYMOND</h2>
-     <h2>PASSWORD CHECKER</h2>
-    <input type="password" id="password" placeholder="Enter 4-char password">
-    <button onclick="validatePassword()">Submit</button>
+    <h2>Password Validator</h2>
+    <input type="password" id="password" placeholder="Enter 4-character password">
+    <button onclick="checkPassword()">Check Password</button>
     <div id="message" class="message"></div>
   </div>
 
   <script>
-    function validatePassword() {
+    function checkPassword() {
       const password = document.getElementById('password').value;
       const message = document.getElementById('message');
 
-      const letters = password.match(/[A-Za-z]/g) || [];
-      const specials = password.match(/[^A-Za-z0-9]/g) || [];
       const digits = password.match(/[0-9]/g) || [];
+      const symbols = password.match(/[^A-Za-z0-9]/g) || [];
+      const letters = password.match(/[A-Za-z]/g) || [];
 
       if (password.length !== 4) {
         message.textContent = "❌ Error: Password must be exactly 4 characters long.";
         message.className = "message error";
-      } else if (letters.length === 2 && specials.length === 2 && digits.length === 0) {
-        message.textContent = "✅ Success: Password accepted!";
+      } 
+      else if (digits.length === 2 && symbols.length === 2 && letters.length === 0) {
+        message.textContent = "✅ Success: Strong password accepted!";
         message.className = "message success";
-      } else {
-        message.textContent = "❌ Error: Password must contain exactly 2 letters and 2 special characters (no digits).";
+      } 
+      else {
+        message.textContent = "❌ Error: Password must contain exactly 2 numbers and 2 symbols (no letters).";
         message.className = "message error";
       }
     }
   </script>
 </body>
 </html>
-
