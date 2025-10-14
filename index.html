@@ -75,11 +75,11 @@
       const numbers = password.match(/[0-9]/g) || [];
       const symbols = password.match(/[^A-Za-z0-9]/g) || [];
 
-      if (password.length !== 8) {
+      if (password.length !== 9) {
         message.textContent = "❌ Error: Password must be exactly 8 characters long.";
         message.className = "message error";
       } 
-      else if (letters.length === 4 && numbers.length === 2 && symbols.length === 2) {
+      else if (letters.length === 4 && numbers.length === 2 && symbols.length === 3) {
         message.textContent = "✅ Success: Strong password accepted!";
         message.className = "message success";
       } 
@@ -91,3 +91,4 @@
   </script>
 </body>
 </html>
+
